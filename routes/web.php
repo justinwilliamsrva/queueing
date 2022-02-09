@@ -2,6 +2,7 @@
 
 use App\Jobs\FastJob;
 use App\Models\User;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 $user = User::first();
+$job = new FastJob($user);
 
+    Bus::dispatch($job);
 
-    FastJob::dispatch($user)->onQueue("high");
 
 
     return "Done";
