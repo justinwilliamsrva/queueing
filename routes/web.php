@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 $user = User::first();
 
-   
-    FastJob::dispatch($user);
+
+    FastJob::dispatch($user)->onQueue("high");
 
 
     return "Done";
