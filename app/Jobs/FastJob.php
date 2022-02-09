@@ -35,12 +35,12 @@ class FastJob implements ShouldQueue
      */
     public function handle(Filesystem $file)
     {
-// throw new \Exception("Failed");
-        $file->put(public_path('testing.txt'),'Running with ' . $this->user->name);
+        // throw new \Exception("Failed");
+        $file->put(public_path('testing.txt'), 'Running with ' . $this->user->name);
         logger('Running with ' . $this->user->name);
     }
-    public function tags(){
-return ['accounts'];
-
+    public function tags()
+    {
+        return ['accounts'];
     }
 }
