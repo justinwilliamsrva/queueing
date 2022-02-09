@@ -1,5 +1,7 @@
 <?php
 
+use App\Jobs\FastJob;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dispatch(function () {
-        logger("Running");
-    });
+$user = User::first();
+
+    dispatch(new FastJob($user));
 
 
     return "Done";
